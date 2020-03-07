@@ -10,6 +10,8 @@ import ScreenDashboard from './src/screens/Dashboard';
 import ProfileScrn from './src/screens/Profile.js';
 import { createStackNavigator } from "react-navigation-stack";
 
+////agcx
+
 <NavigationContainer>
 <Stack.Navigator>
   <Stack.Screen
