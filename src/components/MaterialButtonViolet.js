@@ -1,59 +1,61 @@
 import React, { Component } from "react";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
-//import { Button } from "native-base";
+import { StyleSheet, View, Image } from "react-native";
+import MaterialButtonViolet from "./src/components/MaterialButtonViolet";
 import 'react-native-gesture-handler';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+const Stack = createStackNavigator;
+import Home from '../Paytrixx_Dev/App.js';
+import Regististration from './src/screens/Register.js';
+import ScreenDashboard from './src/screens/Dashboard';
+import ProfileScrn from './src/screens/Profile.js';
+import { createStackNavigator } from "react-navigation-stack";
 
-import test_try from '../screens/Register'
-
-const StackButTest = createStackNavigator;
 <NavigationContainer>
-
-<StackButTest.Navigator>
-  <StackButTest.Screen
-name="Test" component={test_try}
-  />  <StackButTest.Screen />
-</StackButTest.Navigator>
+<Stack.Navigator>
+  <Stack.Screen
+    name="Profile" component={ProfileScrn}
+    name="Register" component={Regististration}
+    name="Dashboard" component={ScreenDashboard} 
+  />
+  <Stack.Screen name="Home" component={Home} />
+</Stack.Navigator>
 </NavigationContainer>
 
-
-function MaterialButtonViolet(props) {
-
+function App(props) {
   return (
-    <TouchableOpacity onPress={() => props.navigate.navigation('Test')}
-    style={[styles.container, props.style]}
-   
-    >
-      <Text style={styles.caption}>{props.text1 || "BUTTON"}</Text>
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <Image
+        source={require("./src/assets/images/logo.png")}
+        resizeMode="contain"
+        style={styles.image}
+      ></Image>
+      <MaterialButtonViolet
+        text1="Register"
+        style={styles.materialButtonViolet}
+      ></MaterialButtonViolet>
+    </View>
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#3F51B5",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingRight: 16,
-    paddingLeft: 16,
-    elevation: 2,
-    minWidth: 88,
-    borderRadius: 2,
-    shadowOffset: {
-      height: 1,
-      width: 0
-    },
-    shadowColor: "#000",
-    shadowOpacity: 0.35,
-    shadowRadius: 5
+    flex: 1
   },
-  caption: {
-    color: "#fff",
-    fontSize: 14,
-    fontFamily: "roboto-regular"
+  image: {
+    width: 250,
+    height: 240,
+    marginTop: 105,
+    alignSelf: "center"
+  },
+  materialButtonViolet: {
+    width: 130,
+    height: 36,
+    backgroundColor: "rgba(50,187,46,1)",
+    marginTop: 180,
+    borderRadius: 180,
+    alignSelf: "center"
   }
 });
 
-export default MaterialButtonViolet;
+export default App;
